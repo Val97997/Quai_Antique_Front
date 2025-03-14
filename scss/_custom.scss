@@ -1,0 +1,13 @@
+// include default variables overrides here : 
+
+$primary : #9F681A;
+$secondary : #B7A790;
+$dark : #422A09;
+$black : #2D250B;
+$font-family-sans-serif: "Montserrat", sans-serif !default;
+$font-family-serif : "Hind Madurai", serif !default;
+
+@import "../node_modules/bootstrap/scss/bootstrap"; // ligne pour importer le scss Bootstrap
+
+
+// custom code here :
