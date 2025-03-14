@@ -24,10 +24,13 @@ const getRouteByUrl = (url) => {
 // Fonction pour charger le contenu de la page
 const LoadContentPage = async () => {
   const path = window.location.pathname;
+  console.log(path);
   // Récupération de l'URL actuelle
   const actualRoute = getRouteByUrl(path);
+  console.log(actualRoute);
   // Récupération du contenu HTML de la route
   const html = await fetch(actualRoute.pathHtml).then((data) => data.text());
+  console.log(html);
   // Ajout du contenu HTML à l'élément avec l'ID "main-page"
   document.getElementById("main-page").innerHTML = html;
 

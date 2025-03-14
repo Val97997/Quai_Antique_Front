@@ -7,4 +7,4 @@ export const allRoutes = [
 ];
 
 // le titre s'affiche comme ceci : Route.titre - websitename
-export const websitename = "Quai Antique";
+export const websiteName = "Quai_Antique";

@@ -1,8 +1,8 @@
 export default class Route {
-    constructor(url, title, pathHTML, pathJS = ""){
+    constructor(url, title, pathHtml, pathJS = ""){
         this.url = url;
         this.title = title;
-        this.pathHTML = pathHTML;
+        this.pathHtml = pathHtml;
         this.pathJS = pathJS;
     }
 }
