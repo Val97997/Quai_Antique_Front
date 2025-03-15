@@ -6,7 +6,7 @@ html {
     min-height: 100%;
 }
 footer.footer{
-    min-width: 100%;
+    width: 100%;
     padding: 1.5rem;
     position:absolute;
     bottom: 0;
@@ -18,7 +18,16 @@ p{
     font-family: $font-family-serif;
     font-size: 1.4rem;
 }
-
+@media (max-width:550px) {
+    footer>div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+a{
+    font-size: 1.2rem;
+}
 // home.html :
 
 .hero-scene{
@@ -47,5 +56,34 @@ p{
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+}
+.text-justify{
+    text-align: justify;
+}
+
+// galerie.html :
+
+.image-card{
+    position: relative;
+    &:hover{
+        img{
+            filter: brightness(0.2);
+        }
+        .titre-image{
+            opacity: 1;
+        }
+    }
+    .titre-image{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        opacity: 0;
+        transition: ease-in-out 0.15s;
+    }
+    img{
+        transition: ease-in-out 0.15s;
     }
 }
