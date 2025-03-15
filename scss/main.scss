@@ -1,2 +1,51 @@
 @import 'custom';
 @import url("/node_modules/bootstrap-icons/font/bootstrap-icons.css");
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+footer.footer{
+    min-width: 100%;
+    padding: 1.5rem;
+    position:absolute;
+    bottom: 0;
+}
+main{
+    margin-bottom: 25rem;
+}
+p{
+    font-family: $font-family-serif;
+    font-size: 1.4rem;
+}
+
+// home.html :
+
+.hero-scene{
+    position: relative;
+    &::before{
+        content:"";
+        position: absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background-image: url(../images/FondHeroScene.png);
+        background-position: center;
+        background-size: cover;
+        filter: brightness(0.3);
+    }
+
+    *{
+        //Positionner les éléments devant le ::before
+        position:relative;
+    }
+
+    .hero-scene-content{
+        height: 30rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

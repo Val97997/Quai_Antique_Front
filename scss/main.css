@@ -11965,4 +11965,50 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+footer.footer {
+  min-width: 100%;
+  padding: 1.5rem;
+  position: absolute;
+  bottom: 0;
+}
+
+main {
+  margin-bottom: 25rem;
+}
+
+p {
+  font-family: "Hind Madurai", serif;
+  font-size: 1.4rem;
+}
+
+.hero-scene {
+  position: relative;
+}
+.hero-scene::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/FondHeroScene.png);
+  background-position: center;
+  background-size: cover;
+  filter: brightness(0.3);
+}
+.hero-scene * {
+  position: relative;
+}
+.hero-scene .hero-scene-content {
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=main.css.map */
