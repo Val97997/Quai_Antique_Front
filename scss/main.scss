@@ -25,13 +25,21 @@ p{
         align-items: center;
     }
 }
+header{
+    position: sticky;
+    top: 0%;
+}
 a{
     font-size: 1.2rem;
+}
+li {
+    list-style: none;
 }
 // home.html :
 
 .hero-scene{
     position: relative;
+    margin-bottom: 1.5rem;
     &::before{
         content:"";
         position: absolute;
@@ -85,5 +93,43 @@ a{
     }
     img{
         transition: ease-in-out 0.15s;
+    }
+}
+
+// carte.html : 
+
+.carte-container{
+    margin: 2rem 5rem 2rem 0rem;
+    width: 100%;
+    box-sizing: border-box;
+    ul{
+        margin-left: 0rem;
+        padding-left: 0rem;
+    }
+}
+.inline-element{
+    padding: 1.5rem 1rem 1.5rem 1rem ;
+    h3:first-child{
+        width: 50rem;
+        border-bottom: 0.15rem dotted black;
+    }
+    h3:nth-child(2){
+        width: 15rem;
+    }
+    p{
+        width: 50rem;
+        margin-bottom: -1rem;
+    }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+// login.html
+
+.login-form{
+    min-height: 25rem;
+    button{
+        margin-top: 2rem;
     }
 }
