@@ -1,0 +1,69 @@
+<div class="hero-scene text-center text-white">
+    <div class="hero-scene-content">
+        
+        <h1>Passer une réservation</h1>
+        
+    </div>          
+</div>
+
+
+<div class="container pb-5 mb-5">
+    
+    <form class="login-form mb-5">
+        <div class="mt-2 form-group">
+            <label class="form-label text-primary" for="nom">Nom</label>
+            <input disabled type="text" class="form-control" id="nom" placeholder="Votre nom">
+        </div>
+        <div class="mt-2 form-group">
+            <label class="form-label text-primary" for="prenom">Prénom</label>
+            <input disabled type="text" class="form-control" id="prenom" placeholder="Votre prénom">
+        </div>
+        <div class="mt-2 form-group">
+          <label class="form-label text-primary" for="allergieInput">Allergies</label>
+          <input type="text" class="form-control" id="allergieInput" placeholder="Vos allergies">
+        </div>
+        <div class="mt-2 form-group">
+          <label class="form-label text-primary" for="nbConvivesInput">Nmbre de convives</label>
+          <input min="1" max="10" type="number" class="form-control" id="nbConvivesInput" placeholder="Nombers de places">
+        </div>
+        <div class="mt-2 form-group">
+            <label class="form-label text-primary" for="dateInput">Date</label>
+            <input type="date" class="form-control" id="dateInput">
+        </div>
+        <div class="mt-2 form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="creneau" id="midiRadio">
+                <label class="form-check-label" for="midiRadio">
+                  Midi
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="creneau" id="soirRadio">
+                <label class="form-check-label" for="soirRadio">
+                  Soir
+                </label>
+            </div>
+        </div>
+        <div class="mt-2">
+            <label class="form-label text-primary" for="selectHour">Heure</label>
+            <select class="form-select" name="selectHour" id="selectHour">
+                <option selected value="">19:30</option>
+                <option value="">19:45</option>
+                <option value="">20:00</option>
+                <option value="">20:15</option>
+                <option value="">20:30</option>
+                <option value="">20:45</option>
+                <option value="">21:00</option>
+                <option value="">21:30</option>
+                <option value="">22:00</option>
+            </select>
+
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Réserver</button>
+            <button type="button" class="btn btn-danger">Annuler</button>
+        </div>
+      </form>
+    
+    
+  </div>

@@ -74,7 +74,23 @@ li {
 
 .image-card{
     position: relative;
+
+    .action-image-buttons{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        opacity: 0;
+        transition: ease-in-out .15s;
+    }
+
     &:hover{
+        .action-image-buttons{
+            opacity: 1;
+        }
         img{
             filter: brightness(0.2);
         }
@@ -95,6 +111,7 @@ li {
         transition: ease-in-out 0.15s;
     }
 }
+
 
 // carte.html : 
 
@@ -131,5 +148,16 @@ li {
     min-height: 25rem;
     button{
         margin-top: 2rem;
+    }
+}
+
+
+//allRes.html
+
+.allRes{
+    a{
+        display: block;
+        color: $black;
+        padding: 1rem;
     }
 }
