@@ -12,25 +12,48 @@
         <div class="mt-2 form-group">
             <label class="form-label text-primary" for="nom">Nom</label>
             <input type="text" class="form-control" id="nom" placeholder="Votre nom">
+            <!-- div pour afficher le message d'erreur explicatif si le champ est non renseigné -->
+            <div class="invalid-feedback">
+              Champ requis !
+            </div>
         </div>
         <div class="mt-2 form-group">
             <label class="form-label text-primary" for="prenom">Prénom</label>
             <input type="text" class="form-control" id="prenom" placeholder="Votre prénom">
+            <!-- div pour afficher le message d'erreur explicatif si le champ est non renseigné -->
+            <div class="invalid-feedback">
+              Champ requis !
+            </div>
         </div>
         <div class="mt-2 form-group">
           <label class="form-label text-primary" for="emailInput">Email</label>
           <input type="email" class="form-control" id="emailInput" placeholder="Enter email">
+          <!-- div pour afficher le message d'erreur explicatif si le format du mail est incorrect  -->
+          <div class="invalid-feedback">
+            Format d'adresse mail incorrect !
+          </div>
         </div>
         <div class="mt-2 form-group">
           <label class="form-label text-primary" for="passwordInput">Password</label>
           <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+          <!-- div pour afficher le message d'erreur explicatif si le format du MDP est incorrect  -->
+          <div class="invalid-feedback">
+            Mot de passe inadéquat: au moins 8 caractères, une Maj, une lettre minuscule, un chiffre, un car. spécial !
+          </div>
+          <div class="valid-feedback">
+            Le mot de passe est suffisamment robuste !
+          </div>
+
         </div>
         <div class="mt-2 form-group">
             <label class="form-label text-primary" for="validatePasswordInput">Validez votre mot de passe</label>
             <input type="password" class="form-control" id="validatePasswordInput" placeholder="Validate Password">
-          </div>
+        </div>
+        <div class="invalid-feedback">
+            Les champs ne correspondent pas !
+        </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-primary">Inscription</button>
+            <button type="submit" id="btn-validation-inscription" class="btn btn-primary">Inscription</button>
         </div>
       </form>
 
