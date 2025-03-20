@@ -37,8 +37,11 @@
                       <li class="nav-item">
                         <a class="nav-link" href="/compte">Mon compte</a>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="/login">Connexion/Deconnexion</a>
+                      <li class="nav-item" data-show="disconnected">
+                        <a class="nav-link" href="/login">Connexion</a>
+                      </li>
+                      <li class="nav-item" data-show="connected">
+                        <a class="nav-link" id="btn-logout" href="">Déconnexion</a>
                       </li>
                     </ul>
                   </div>
@@ -71,6 +74,7 @@
           </div>
       </footer>
 
+      <script type="module" src="./js/Script.js"></script>
         <script type="module" src="./Router/router.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Le TYPE MODULE est obligatoire à spécifier car utilisation de IMPORT dans le fichier js  -->

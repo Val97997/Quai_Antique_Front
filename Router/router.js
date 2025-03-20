@@ -1,8 +1,9 @@
 import Route from "./Route.js";
 import { allRoutes, websiteName } from "./allRoutes.js";
+import {isConnected, showHideElemForRoles, getRole} from "../js/Script.js";
 
 // Création d'une route pour la page 404 (page introuvable)
-const route404 = new Route("404", "Page introuvable", "/pages/404.html");
+const route404 = new Route("404", "Page introuvable", "/pages/404.html", []);
 
 // Fonction pour récupérer la route correspondant à une URL donnée
 const getRouteByUrl = (url) => {
@@ -27,6 +28,25 @@ const LoadContentPage = async () => {
   console.log(path);
   // Récupération de l'URL actuelle
   const actualRoute = getRouteByUrl(path);
+
+  // Vérifier les DROITS D'ACCES A la page
+  const allRightsArray = actualRoute.authorize;
+
+    if(allRightsArray.length > 0){
+        if(allRightsArray.includes("disconnected")){
+            if(isConnected()){
+                window.location.replace("/");
+            }
+        }
+        else{
+            const roleUser = getRole();
+            if(!allRightsArray.includes(roleUser)){
+                window.location.replace("/");
+            }
+        }
+    }
+
+
   console.log(actualRoute);
   // Récupération du contenu HTML de la route
   const html = await fetch(actualRoute.pathHtml).then((data) => data.text());
@@ -47,6 +67,9 @@ const LoadContentPage = async () => {
 
   // Changement du titre de la page
   document.title = actualRoute.title + " - " + websiteName;
+
+  //afficher et masquer les éléments en fn du rôle :
+  showHideElemForRoles();
 };
 
 // Fonction pour gérer les événements de routage (clic sur les liens)
@@ -65,3 +88,29 @@ window.onpopstate = LoadContentPage;
 window.route = routeEvent;
 // Chargement du contenu de la page au chargement initial
 LoadContentPage();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
