@@ -1,7 +1,10 @@
 const mailInput = document.getElementById("emailInput");
 const passwordInput = document.getElementById('passwordInput');
 const btnLogin = document.getElementById('btnlogin');
-// Script commun à toutes les pages ( => index.html)
+const loginForm = document.getElementById("login-form");
+const ApiUrl = "http://127.0.0.1:8000/api/";
+
+loginForm.addEventListener("click", checkCredentials);
 // Gestion des COOKIES :
 
 const tokenCookieName = "accesstoken";
@@ -23,22 +26,47 @@ btnLogin.addEventListener("click", checkCredentials);
 
 function checkCredentials(){
     //il faudra appeler l'API pour vérifier les credentials en BDD !
+
+    // on récupère les données du formulaire d'inscription de manière organisée dans un FormData :
+    let dataForm = new FormData(loginForm);
+
+    // on définit le type de données et leur format, et le header :
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
     
-    if(mailInput.value == "test@mail.com" && passwordInput.value == "123"){
+    // on initialise le body, avec le contenu :
+    const raw = JSON.stringify({
+      "username": dataForm.get("email"), // l'email devient l'identifiant name nécessaire à la connexion
+      "password": dataForm.get("password")
+    });
+    
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow"
+    };
+    
+    fetch(ApiUrl + "login", requestOptions)
+      .then(response =>{
+        if(response.ok){
+            return response.json();
+        } else {
+            mailInput.classList.add("is-invalid");
+            passwordInput.classList.add("is-invalid");
+        }
+      })
+      .then(result => {
         mailInput.classList.remove("is-invalid");
         passwordInput.classList.remove("is-invalid");
         //il faudra récuperer le vrai token :
-        const token = "hdhmlikzdhhqjdzajklqji";
+        const token = result.apiToken;
         setToken(token);
         // placer le TOKEN en COOKIE
-        setCookie("role", "client", 7);
-        
-        window.location.replace("/");
-    }
-    else {
-        mailInput.classList.add("is-invalid");
-        passwordInput.classList.add("is-invalid");
-    }
+        setCookie(roleCookieName, result.roles[0], 7);
+        window.location.replace("/"); 
+      })
+      .catch((error) => console.error(error));
 }
 
 

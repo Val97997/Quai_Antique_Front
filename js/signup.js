@@ -1,5 +1,5 @@
 // Script de VALIDATION DES CHAMPS du SIGN UP : 
-
+const ApiUrl = "http://127.0.0.1:8000/api/";
 const inputName = document.getElementById("nom");
 const inputLname = document.getElementById("prenom");
 const inputEmail = document.getElementById("emailInput");
@@ -7,6 +7,10 @@ const inputPassword = document.getElementById("passwordInput");
 const inputPasswordValidate = document.getElementById("validatePasswordInput");
 // gestion du bouton inscription pour qu'il n'apparaisse que si les champs sont corrects :
 const btnValid = document.getElementById("btn-validation-inscription");
+
+const formInscr = document.getElementById("login-form");
+
+btnValid.addEventListener("click", InscrireUtilisateur);
 
 inputName.addEventListener("keyup", () => {
     const nameOk = validateRequired(inputName);
@@ -136,7 +140,59 @@ function validatePassword(input) {
 }
 
 function validateConfPassword(inputPassw, inputConfPassw){
-    (inputPassw.value == inputConfPassw.value) ? (inputConfPassw.classList.add("is-valid"), inputConfPassw.classList.remove("is-invalid"), true)
-    : (inputConfPassw.classList.add("is-invalid"), inputConfPassw.classList.remove("is-valid"), false);
+    if(inputPassw.value == inputConfPassw.value){
+        inputConfPassw.classList.add("is-valid");
+        inputConfPassw.classList.remove("is-invalid");
+        return true
+    }
+     else {
+        inputConfPassw.classList.add("is-invalid");
+        inputConfPassw.classList.remove("is-valid");
+        return false;
+     }   
        
+}
+
+
+
+// le Fetch pour envoyer les données vers l'API du projet, et enregistrer dans la BDD les données users :
+
+function InscrireUtilisateur(){
+    // on récupère les données du formulaire d'inscription de manière organisée dans un FormData :
+    let dataForm = new FormData(formInscr);
+
+    // on définit le type de données et leur format, et le header :
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    // on initialise le body, avec le contenu :
+    const raw = JSON.stringify({
+      "firstName": dataForm.get("name"),
+      "lastName": dataForm.get("lname"),
+      "email": dataForm.get("email"),
+      "password": dataForm.get("password")
+    });
+    
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow"
+    };
+    
+    fetch(ApiUrl + "registration", requestOptions)
+      .then(response =>{
+        if(response.ok){
+            return response.json();
+        } else {
+            alert("Erreur lors de l'inscription");
+        }
+      })
+      .then(result => {
+        // si l'inscription est un succès, redirection vers la page de login :
+        alert("Bravo" + dataForm.get("name") +", vous êtes inscrit, connectez-vous.")
+        document.location.href="/login";  
+        console.log(result);
+      })
+      .catch((error) => console.error(error));
 }
