@@ -128,8 +128,5 @@ function eraseCookie(name) {
 
 // Gestion de la connexion :
 function isConnected(){
-    if(getToken() == null || getToken == undefined){
-        return false;
-    }
-    else return true;
+    return !(getToken() == null || getToken == undefined);
 }

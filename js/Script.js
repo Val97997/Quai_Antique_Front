@@ -51,10 +51,7 @@ function eraseCookie(name) {
 
 // Gestion de la connexion :
 export function isConnected(){
-    if(getToken() == null || getToken == undefined){
-        return false;
-    }
-    else return true;
+    return !(getToken() == null || getToken == undefined);
 }
 
 
@@ -92,7 +89,7 @@ export function showHideElemForRoles(){
 }
 
 // fonction pour sécuriser l'injection du titre de la photo sous format string :
-function sanitizeHtml(text){
+export function sanitizeHtml(text){
     const tempHtml = document.createElement("div");
     tempHtml.innerHTML = text;
     return tempHtml.innerHTML;
