@@ -13,7 +13,7 @@ jobs:
       with:
         server: gt97.alwaysdata.net
         username: gt97
-        password: ${{ secrets.Dragonsxenor1997! }}
+        password: ${{ secrets.ftp_password }}
         server-dir: /www/
         exclude: |
           **/.git*
