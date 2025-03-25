@@ -22,4 +22,4 @@ jobs:
           **/node_modules/bootstrap-icons/icons/**  
         server-dir: /www/
         port: 990
-        protocol: ftps
+        protocol: sftp
