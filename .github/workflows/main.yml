@@ -11,7 +11,7 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ftp-gt97.alwaysdata.net
+        server: sftp-gt97.alwaysdata.net
         username: gt97
         password: ${{ secrets.ftp_password }}
         exclude: |
