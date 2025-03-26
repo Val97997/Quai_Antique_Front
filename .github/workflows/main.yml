@@ -1,4 +1,4 @@
-on: push
+on : push
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
@@ -6,18 +6,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
-      uses: actions/checkout@v4
-    
+      uses: actions/checkout@v3
+
+    - name: 📂 Install dependencies
+      uses: actions/setup-node@v2
+      with: 
+        node-version: '22'
+
+    - name: 📂 Install npm dependencies
+      run: npm install
+   
     - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: gt97.alwaysdata.net
+        server: ftp-gt97.alwaysdata.net
         username: gt97
         password: ${{ secrets.ftp_password }}
-        server-dir: /www/
         exclude: |
           **/.git*
           **/.git*/**
           **/node_modules/bootstrap/scss/**
           **/node_modules/bootstrap/js/**
           **/node_modules/bootstrap-icons/icons/**  
+        server-dir: /www/
+        port: 990
+        protocol: ftps-legacy
